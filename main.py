@@ -47,4 +47,13 @@ plt.xlabel('X')
 plt.ylabel('Y')
 plt.axis('equal')
 plt.grid(True)
-plt.show()
+
+# Controleer of we in een GUI-omgeving zijn of in een container
+import os
+if os.environ.get('MPLBACKEND') == 'Agg':
+    # In container: sla de plot op als afbeelding
+    plt.savefig('pad_visualisatie.png')
+    print("Plot opgeslagen als 'pad_visualisatie.png'")
+else:
+    # Normale modus: toon het plot-venster
+    plt.show()
